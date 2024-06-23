@@ -12,7 +12,7 @@ EpisodeModel _$EpisodeModelFromJson(Map<String, dynamic> json) => EpisodeModel(
       season: (json['season'] as num).toInt(),
       number: (json['number'] as num).toInt(),
       summary: json['summary'] as String?,
-      image: json['image'] as String?,
+      image: json['image'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$EpisodeModelToJson(EpisodeModel instance) =>

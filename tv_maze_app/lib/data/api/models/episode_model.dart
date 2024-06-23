@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../domain/entities/episode.dart';
+
 part 'episode_model.g.dart';
 
 @JsonSerializable()
@@ -9,7 +11,7 @@ class EpisodeModel {
   final int season;
   final int number;
   final String? summary;
-  final String? image;
+  final Map<String, dynamic>? image;
 
   EpisodeModel({
     required this.id,
@@ -23,4 +25,15 @@ class EpisodeModel {
   factory EpisodeModel.fromJson(Map<String, dynamic> json) =>
       _$EpisodeModelFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeModelToJson(this);
+
+  Episode toDomain() {
+    return Episode(
+      id: id,
+      name: name,
+      season: season,
+      number: number,
+      summary: summary,
+      image: image,
+    );
+  }
 }

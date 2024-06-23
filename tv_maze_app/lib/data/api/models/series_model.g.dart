@@ -10,7 +10,7 @@ SeriesModel _$SeriesModelFromJson(Map<String, dynamic> json) => SeriesModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       summary: json['summary'] as String?,
-      image: json['image'] as String?,
+      image: json['image'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$SeriesModelToJson(SeriesModel instance) =>
