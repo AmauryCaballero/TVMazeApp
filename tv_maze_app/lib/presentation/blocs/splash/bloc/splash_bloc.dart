@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/errors/failures.dart';
+import '../../../../domain/entities/series.dart';
 import '../../../../domain/usecases/get_all_series.dart';
 
 part 'splash_event.dart';

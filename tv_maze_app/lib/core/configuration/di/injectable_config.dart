@@ -42,22 +42,18 @@ abstract class RegisterModule {
   NetworkInfo get networkInfo => NetworkInfoImpl(connectivity);
 
   @lazySingleton
-  SeriesRemoteDataSource get remoteDataSource =>
-      SeriesRemoteDataSourceImpl(tvMazeApiService);
-
-  @lazySingleton
   SeriesLocalDataSource get localDataSource =>
       SeriesLocalDataSourceImpl(box: box);
 
   @lazySingleton
   SeriesRepository get seriesRepository => SeriesRepositoryImpl(
-      remoteDataSource: remoteDataSource,
+      remoteDataSource: seriesRemoteDataSource,
       localDataSource: localDataSource,
       networkInfo: networkInfo);
 
   @lazySingleton
   SeriesRemoteDataSource get seriesRemoteDataSource =>
-      SeriesRemoteDataSourceImpl(getIt<TvMazeApiService>());
+      SeriesRemoteDataSourceImpl(tvMazeApiService);
 
   @lazySingleton
   GetAllSeries get getAllSeriesUseCase => GetAllSeries(seriesRepository);

@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is LoadedState) {
-            context.router.replace(const HomeRoute());
+            context.router.replace(HomeRoute(seriesList: state.seriesList));
           }
         },
         child: const Scaffold(),

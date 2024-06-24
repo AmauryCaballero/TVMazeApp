@@ -12,7 +12,7 @@ class InitialState extends SplashState {}
 class LoadingState extends SplashState {}
 
 class LoadedState extends SplashState {
-  final List<dynamic> seriesList;
+  final List<Series> seriesList;
 
   const LoadedState(this.seriesList);
 
