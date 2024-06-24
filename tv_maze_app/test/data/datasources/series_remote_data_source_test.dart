@@ -19,8 +19,8 @@ void main() {
   });
 
   group('getAllSeries', () {
-    final tPage = 1;
-    final tSeriesModel = SeriesModel(
+    const tPage = 1;
+    const tSeriesModel = SeriesModel(
         id: 1,
         name: 'Test Series',
         summary: 'Summary',
