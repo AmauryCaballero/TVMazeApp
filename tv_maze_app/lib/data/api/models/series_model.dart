@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../domain/entities/series.dart';
@@ -5,13 +6,13 @@ import '../../../domain/entities/series.dart';
 part 'series_model.g.dart';
 
 @JsonSerializable()
-class SeriesModel {
+class SeriesModel extends Equatable {
   final int id;
   final String name;
   final String? summary;
   final Map<String, dynamic>? image;
 
-  SeriesModel({
+  const SeriesModel({
     required this.id,
     required this.name,
     this.summary,
@@ -30,4 +31,7 @@ class SeriesModel {
       image: image,
     );
   }
+
+  @override
+  List<Object?> get props => [id, name, summary, image];
 }
