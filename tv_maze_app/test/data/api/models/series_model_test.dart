@@ -7,7 +7,6 @@ void main() {
     id: 1,
     name: 'Test Series',
     summary: 'Summary',
-    image: {'medium': 'url'},
   );
 
   test('should be a subclass of Series entity', () {

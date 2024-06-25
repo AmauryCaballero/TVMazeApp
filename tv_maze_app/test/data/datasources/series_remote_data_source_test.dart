@@ -19,12 +19,12 @@ void main() {
   });
 
   group('getAllSeries', () {
-    final tPage = 1;
-    final tSeriesModel = SeriesModel(
-        id: 1,
-        name: 'Test Series',
-        summary: 'Summary',
-        image: {'medium': 'url'});
+    const tPage = 1;
+    const tSeriesModel = SeriesModel(
+      id: 1,
+      name: 'Test Series',
+      summary: 'Summary',
+    );
     final tSeriesModelList = [tSeriesModel];
 
     test('should return List<SeriesModel> when the call to API is successful',

@@ -20,10 +20,12 @@ void main() {
 
   final tSeries = [
     const Series(
-        id: 1,
-        name: 'Test Series',
-        summary: 'Summary',
-        image: {'medium': 'url'})
+      id: 1,
+      name: 'Test Series',
+      summary: 'Summary',
+      genres: [],
+      rating: null,
+    )
   ];
   const tQuery = 'Test';
 

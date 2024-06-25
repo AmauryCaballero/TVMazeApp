@@ -1,3 +1,5 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
 import '../../core/errors/exceptions.dart';
 import '../api/models/series_model.dart';
 
@@ -7,16 +9,22 @@ abstract class SeriesLocalDataSource {
 }
 
 class SeriesLocalDataSourceImpl implements SeriesLocalDataSource {
-  // Assuming you have some local storage solution (like shared_preferences or hive)
-  // Here we'll just use a placeholder for demonstration
+  final Box box;
+
+  SeriesLocalDataSourceImpl({required this.box});
 
   @override
   Future<List<SeriesModel>> getLastSeries() {
-    throw CacheException(); // Just a placeholder
+    final seriesList = box.get('cachedSeries', defaultValue: []);
+    if (seriesList.isNotEmpty) {
+      return Future.value(List<SeriesModel>.from(seriesList));
+    } else {
+      throw CacheException();
+    }
   }
 
   @override
   Future<void> cacheSeries(List<SeriesModel> seriesToCache) {
-    return Future.value();
+    return box.put('cachedSeries', seriesToCache);
   }
 }

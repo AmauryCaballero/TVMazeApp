@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
 import 'models/episode_model.dart';
@@ -9,6 +10,7 @@ part 'tvmaze_api_service.g.dart';
 
 @RestApi(baseUrl: "https://api.tvmaze.com")
 abstract class TvMazeApiService {
+  @factoryMethod
   factory TvMazeApiService(Dio dio, {String baseUrl}) = _TvMazeApiService;
 
   @GET("/shows")
