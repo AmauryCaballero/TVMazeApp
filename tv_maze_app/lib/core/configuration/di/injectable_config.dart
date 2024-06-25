@@ -83,7 +83,7 @@ abstract class RegisterModule {
   SplashBloc get splashBloc => SplashBloc(getAllSeries: getAllSeriesUseCase);
 
   @factory
-  HomeBloc get homeBloc => HomeBloc();
+  HomeBloc get homeBloc => HomeBloc(getAllSeries: getAllSeriesUseCase);
 
   @factory
   BackgroundImageCubit get backgroundImageCubit => BackgroundImageCubit();

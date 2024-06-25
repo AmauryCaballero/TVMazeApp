@@ -15,3 +15,12 @@ class LoadHomeData extends HomeEvent {
   @override
   List<Object> get props => [seriesList];
 }
+
+class LoadMoreSeries extends HomeEvent {
+  final int page;
+
+  const LoadMoreSeries(this.page);
+
+  @override
+  List<Object> get props => [page];
+}

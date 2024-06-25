@@ -28,7 +28,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(LoadHomeData(seriesList)),
+      create: (context) =>
+          context.read<HomeBloc>()..add(LoadHomeData(seriesList)),
       child: Scaffold(
         appBar: const _HomeAppbar(),
         body: BlocBuilder<HomeBloc, HomeState>(
@@ -45,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                       return Container();
                     },
                   ),
-                  _buildCarousel(state.seriesList, context),
+                  _buildCarousel(state.seriesList, context, state),
                 ],
               );
             }
@@ -56,11 +57,18 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCarousel(List<Series> seriesList, BuildContext context) {
+  Widget _buildCarousel(
+      List<Series> seriesList, BuildContext context, HomeLoaded state) {
     return Center(
       child: CarouselSlider.builder(
         itemCount: seriesList.length,
         itemBuilder: (context, index, realIndex) {
+          if (index == seriesList.length - 1 && !state.hasReachedMax) {
+            context
+                .read<HomeBloc>()
+                .add(LoadMoreSeries(state.seriesList.length ~/ 10 + 1));
+          }
+
           final serie = seriesList[index];
           return _HomeSeriesCard(
             key: Key(serie.hashCode.toString()),
@@ -75,7 +83,7 @@ class HomeScreen extends StatelessWidget {
           pageSnapping: true,
           autoPlay: true,
           autoPlayCurve: Curves.easeInBack,
-          enableInfiniteScroll: true,
+          enableInfiniteScroll: false,
           autoPlayAnimationDuration: const Duration(milliseconds: 800),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           onPageChanged: (index, reason) {
