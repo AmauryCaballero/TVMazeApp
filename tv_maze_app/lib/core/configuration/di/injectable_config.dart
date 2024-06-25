@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tv_maze_app/core/theme/app_theme.dart';
 import 'package:tv_maze_app/presentation/blocs/home/bloc/home_bloc.dart';
+import 'package:tv_maze_app/presentation/blocs/search/bloc/search_bloc.dart';
 
 import '../../../domain/usecases/get_episodes_by_series.dart';
 import '../../../domain/usecases/get_series_details.dart';
@@ -87,4 +88,7 @@ abstract class RegisterModule {
 
   @factory
   BackgroundImageCubit get backgroundImageCubit => BackgroundImageCubit();
+
+  @factory
+  SearchBloc get serarchBloc => SearchBloc(searchSeries: searchSeriesUseCase);
 }
