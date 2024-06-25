@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:tv_maze_app/data/api/models/image_model.dart';
 
 import '../../../domain/entities/series.dart';
+import 'rating_model.dart';
 
 part 'series_model.g.dart';
 
@@ -19,17 +21,34 @@ class SeriesModel extends Equatable {
   final String? summary;
 
   @HiveField(3)
-  final Map<String, dynamic>? image;
+  final ImageModel? image;
+
+  @HiveField(4)
+  final int? updated;
+
+  @HiveField(5)
+  final String? officialSite;
+
+  @HiveField(6)
+  final List<String>? genres;
+
+  @HiveField(7)
+  final RatingModel? rating;
 
   const SeriesModel({
     required this.id,
     required this.name,
     this.summary,
     this.image,
+    this.updated,
+    this.officialSite,
+    this.genres,
+    this.rating,
   });
 
   factory SeriesModel.fromJson(Map<String, dynamic> json) =>
       _$SeriesModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$SeriesModelToJson(this);
 
   Series toDomain() {
@@ -37,7 +56,9 @@ class SeriesModel extends Equatable {
       id: id,
       name: name,
       summary: summary,
-      image: image,
+      image: image?.toDomain(),
+      genres: genres ?? [],
+      rating: rating?.toDomain(),
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_maze_app/core/theme/app_theme.dart';
+import 'package:tv_maze_app/presentation/blocs/home/bloc/home_bloc.dart';
 import 'package:tv_maze_app/presentation/blocs/splash/bloc/splash_bloc.dart';
 
 import 'core/configuration/di/injectable_config.dart';
@@ -15,10 +16,13 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeBloc>(
-          create: (context) => ThemeBloc(),
+          create: (context) => getIt<ThemeBloc>(),
         ),
         BlocProvider<SplashBloc>(
           create: (context) => getIt<SplashBloc>(),
+        ),
+        BlocProvider<HomeBloc>(
+          create: (context) => getIt<HomeBloc>(),
         )
       ],
       child: const AppWithThemeObserver(),

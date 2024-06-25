@@ -20,14 +20,17 @@ class SeriesModelAdapter extends TypeAdapter<SeriesModel> {
       id: fields[0] as int,
       name: fields[1] as String,
       summary: fields[2] as String?,
-      image: (fields[3] as Map?)?.cast<String, dynamic>(),
+      image: fields[3] as ImageModel?,
+      updated: fields[4] as int?,
+      officialSite: fields[5] as String?,
+      genres: (fields[6] as List?)?.cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, SeriesModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +38,13 @@ class SeriesModelAdapter extends TypeAdapter<SeriesModel> {
       ..writeByte(2)
       ..write(obj.summary)
       ..writeByte(3)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(4)
+      ..write(obj.updated)
+      ..writeByte(5)
+      ..write(obj.officialSite)
+      ..writeByte(6)
+      ..write(obj.genres);
   }
 
   @override
@@ -57,7 +66,13 @@ SeriesModel _$SeriesModelFromJson(Map<String, dynamic> json) => SeriesModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       summary: json['summary'] as String?,
-      image: json['image'] as Map<String, dynamic>?,
+      image: json['image'] == null
+          ? null
+          : ImageModel.fromJson(json['image'] as Map<String, dynamic>),
+      updated: (json['updated'] as num?)?.toInt(),
+      officialSite: json['officialSite'] as String?,
+      genres:
+          (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$SeriesModelToJson(SeriesModel instance) =>
@@ -66,4 +81,7 @@ Map<String, dynamic> _$SeriesModelToJson(SeriesModel instance) =>
       'name': instance.name,
       'summary': instance.summary,
       'image': instance.image,
+      'updated': instance.updated,
+      'officialSite': instance.officialSite,
+      'genres': instance.genres,
     };
