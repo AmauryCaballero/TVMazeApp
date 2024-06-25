@@ -6,7 +6,7 @@ class _DarkTheme {
   static final ThemeData _darkTheme = ThemeData(
     colorScheme: _colorScheme,
     primaryColor: _AppColors.primary,
-    hintColor: _AppColors.secondary,
+    hintColor: _AppColors.secondaryVariant,
     scaffoldBackgroundColor: _AppColors.darkBackground,
     canvasColor: _AppColors.darkBackground,
     cardColor: _AppColors.darkSurface,

@@ -44,10 +44,8 @@ class _HomeSeriesCard extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            Theme.of(context).canvasColor.withOpacity(0.2),
-                            Theme.of(context).canvasColor.withOpacity(0.5),
-                            Theme.of(context).canvasColor.withOpacity(0.7),
-                            Theme.of(context).canvasColor,
+                            Theme.of(context).cardColor.withOpacity(0.7),
+                            Theme.of(context).cardColor,
                           ],
                         ),
                       ),
@@ -80,14 +78,26 @@ class _HomeSeriesCard extends StatelessWidget {
                                   if (serie.rating != null)
                                     Flexible(
                                       flex: 1,
-                                      child: Container(
-                                        height: blurHeight / 5,
-                                        color: Theme.of(context)
-                                            .cardColor
-                                            .withOpacity(0.9),
-                                        child: Text(
-                                          '${serie.rating?.average ?? 0.0}',
-                                        ),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 5,
+                                            height: blurHeight / 5,
+                                            color: Theme.of(context)
+                                                .hintColor
+                                                .withOpacity(0.9),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 2),
+                                            color: Theme.of(context)
+                                                .canvasColor
+                                                .withOpacity(0.9),
+                                            child: Text(
+                                              '${serie.rating?.average ?? 0.0}',
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     )
                                 ],

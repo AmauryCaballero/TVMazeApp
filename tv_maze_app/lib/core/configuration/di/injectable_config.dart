@@ -10,6 +10,7 @@ import 'package:tv_maze_app/presentation/blocs/home/bloc/home_bloc.dart';
 import '../../../domain/usecases/get_episodes_by_series.dart';
 import '../../../domain/usecases/get_series_details.dart';
 import '../../../domain/usecases/search_series.dart';
+import '../../../presentation/blocs/backgroundimage/cubit/background_image_cubit.dart';
 import '../../network/network_info.dart';
 import '../../../data/datasources/series_local_data_source.dart';
 import '../../../domain/repositories/series_repository_impl.dart';
@@ -83,4 +84,7 @@ abstract class RegisterModule {
 
   @factory
   HomeBloc get homeBloc => HomeBloc();
+
+  @factory
+  BackgroundImageCubit get backgroundImageCubit => BackgroundImageCubit();
 }

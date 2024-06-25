@@ -24,13 +24,14 @@ class SeriesModelAdapter extends TypeAdapter<SeriesModel> {
       updated: fields[4] as int?,
       officialSite: fields[5] as String?,
       genres: (fields[6] as List?)?.cast<String>(),
+      rating: fields[7] as RatingModel?,
     );
   }
 
   @override
   void write(BinaryWriter writer, SeriesModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class SeriesModelAdapter extends TypeAdapter<SeriesModel> {
       ..writeByte(5)
       ..write(obj.officialSite)
       ..writeByte(6)
-      ..write(obj.genres);
+      ..write(obj.genres)
+      ..writeByte(7)
+      ..write(obj.rating);
   }
 
   @override
@@ -73,6 +76,9 @@ SeriesModel _$SeriesModelFromJson(Map<String, dynamic> json) => SeriesModel(
       officialSite: json['officialSite'] as String?,
       genres:
           (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      rating: json['rating'] == null
+          ? null
+          : RatingModel.fromJson(json['rating'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SeriesModelToJson(SeriesModel instance) =>
@@ -84,4 +90,5 @@ Map<String, dynamic> _$SeriesModelToJson(SeriesModel instance) =>
       'updated': instance.updated,
       'officialSite': instance.officialSite,
       'genres': instance.genres,
+      'rating': instance.rating,
     };

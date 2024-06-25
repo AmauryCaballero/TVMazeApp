@@ -6,6 +6,7 @@ import 'package:tv_maze_app/presentation/blocs/home/bloc/home_bloc.dart';
 import 'package:tv_maze_app/presentation/blocs/splash/bloc/splash_bloc.dart';
 
 import 'core/configuration/di/injectable_config.dart';
+import 'presentation/blocs/backgroundimage/cubit/background_image_cubit.dart';
 import 'presentation/routes/app_router.dart';
 
 class App extends StatelessWidget {
@@ -23,6 +24,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<HomeBloc>(
           create: (context) => getIt<HomeBloc>(),
+        ),
+        BlocProvider<BackgroundImageCubit>(
+          create: (context) => getIt<BackgroundImageCubit>(),
         )
       ],
       child: const AppWithThemeObserver(),

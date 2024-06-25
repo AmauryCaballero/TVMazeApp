@@ -9,6 +9,8 @@ abstract class HomeState extends Equatable {
 
 class HomeInitial extends HomeState {}
 
+class HomeLoading extends HomeState {}
+
 class HomeLoaded extends HomeState {
   final List<Series> seriesList;
 
