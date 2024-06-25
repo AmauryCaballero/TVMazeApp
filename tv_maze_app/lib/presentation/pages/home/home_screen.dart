@@ -5,7 +5,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tv_maze_app/core/utils/widget_extension.dart';
 
 import '../../../core/utils/assets_extension.dart';
 import '../../../domain/entities/series.dart';
@@ -14,6 +17,7 @@ import '../../blocs/home/bloc/home_bloc.dart';
 
 part 'widgets/home_series_card.dart';
 part 'widgets/home_background_image.dart';
+part 'widgets/home_appbbar.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -26,11 +30,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeBloc()..add(LoadHomeData(seriesList)),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: const Text('TV Series'),
-        ),
+        appBar: const _HomeAppbar(),
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoaded) {
@@ -40,8 +40,7 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, backgroundImageState) {
                       if (backgroundImageState is BackgroundImageChanged) {
                         return _HomeBackgroundImage(
-                          imageUrl: backgroundImageState.imageUrl,
-                        );
+                            imageUrl: backgroundImageState.imageUrl);
                       }
                       return Container();
                     },
@@ -70,12 +69,12 @@ class HomeScreen extends StatelessWidget {
         },
         options: CarouselOptions(
           height: 400,
-          viewportFraction: 0.7,
-          enlargeFactor: 0.2,
+          viewportFraction: 0.8,
+          enlargeFactor: 0.25,
           enlargeCenterPage: true,
           pageSnapping: true,
           autoPlay: true,
-          autoPlayCurve: Curves.fastOutSlowIn,
+          autoPlayCurve: Curves.easeInBack,
           enableInfiniteScroll: true,
           autoPlayAnimationDuration: const Duration(milliseconds: 800),
           clipBehavior: Clip.antiAliasWithSaveLayer,

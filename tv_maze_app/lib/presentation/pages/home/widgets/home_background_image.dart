@@ -37,8 +37,9 @@ class _HomeBackgroundImage extends StatelessWidget {
                   Positioned.fill(
                     child: BackdropFilter(
                       filter: ui.ImageFilter.blur(
-                        sigmaX: 10,
-                        sigmaY: 10,
+                        sigmaX: 20,
+                        sigmaY: 20,
+                        tileMode: TileMode.repeated,
                       ),
                       child: Container(
                         color: Theme.of(context).canvasColor.withOpacity(0.5),
