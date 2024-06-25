@@ -13,6 +13,7 @@ import '../../blocs/backgroundimage/cubit/background_image_cubit.dart';
 import '../../blocs/home/bloc/home_bloc.dart';
 
 part 'widgets/home_series_card.dart';
+part 'widgets/home_background_image.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -26,6 +27,8 @@ class HomeScreen extends StatelessWidget {
       create: (context) => HomeBloc()..add(LoadHomeData(seriesList)),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           title: const Text('TV Series'),
         ),
         body: BlocBuilder<HomeBloc, HomeState>(
@@ -36,22 +39,12 @@ class HomeScreen extends StatelessWidget {
                   BlocBuilder<BackgroundImageCubit, BackgroundImageState>(
                     builder: (context, backgroundImageState) {
                       if (backgroundImageState is BackgroundImageChanged) {
-                        return _buildBackgroundImage(
-                            backgroundImageState.imageUrl);
+                        return _HomeBackgroundImage(
+                          imageUrl: backgroundImageState.imageUrl,
+                        );
                       }
                       return Container();
                     },
-                  ),
-                  Positioned.fill(
-                    child: BackdropFilter(
-                      filter: ui.ImageFilter.blur(
-                        sigmaX: 10,
-                        sigmaY: 10,
-                      ),
-                      child: Container(
-                        color: Theme.of(context).canvasColor.withOpacity(0.5),
-                      ),
-                    ),
                   ),
                   _buildCarousel(state.seriesList, context),
                 ],
@@ -97,32 +90,5 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _buildBackgroundImage(String? imageUrl) {
-    return imageUrl != null
-        ? Positioned.fill(
-            child: Transform.scale(
-              scale: 1.5,
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                switchInCurve: Curves.easeIn,
-                switchOutCurve: Curves.easeOut,
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(opacity: animation, child: child);
-                },
-                child: CachedNetworkImage(
-                  key: ValueKey<String>(imageUrl),
-                  imageUrl: imageUrl,
-                  fit: BoxFit.fill,
-                  placeholder: (context, url) => Lottie.asset(
-                    'tv_placeholder_animation'.jsonLottie,
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-            ),
-          )
-        : Container();
   }
 }
