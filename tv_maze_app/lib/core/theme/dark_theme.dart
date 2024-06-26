@@ -66,17 +66,21 @@ class _DarkTheme {
   static final InputDecorationTheme _inputDecorationTheme =
       InputDecorationTheme(
     filled: true,
-    fillColor: _AppColors.darkSurface,
+    fillColor: _AppColors.darkSurface.withOpacity(0.5),
     focusedBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primary),
     ),
     enabledBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primaryVariant),
     ),
     errorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.darkError),
     ),
     focusedErrorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.darkError),
     ),
     labelStyle: const TextStyle(color: _AppColors.darkOnSurface),
