@@ -19,7 +19,7 @@ class _HomeSeriesCard extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             CachedNetworkImage(
-              imageUrl: serie.image?.medium ?? '',
+              imageUrl: serie.image?.original ?? '',
               fit: BoxFit.cover,
               placeholder: (context, url) => Lottie.asset(
                 'tv_placeholder_animation'.jsonLottie,
@@ -88,13 +88,16 @@ class _HomeSeriesCard extends StatelessWidget {
                                                 .withOpacity(0.9),
                                           ),
                                           Container(
+                                            height: blurHeight / 5,
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 2),
+                                                horizontal: 8),
                                             color: Theme.of(context)
                                                 .canvasColor
                                                 .withOpacity(0.9),
-                                            child: Text(
-                                              '${serie.rating?.average ?? 0.0}',
+                                            child: Center(
+                                              child: Text(
+                                                '${serie.rating?.average ?? 0.0}',
+                                              ),
                                             ),
                                           )
                                         ],
