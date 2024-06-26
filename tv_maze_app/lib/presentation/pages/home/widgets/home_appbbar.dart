@@ -26,17 +26,27 @@ class _HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
           Expanded(child: Container()),
-          Hero(
-            tag: 'searchBar',
+          GestureDetector(
+            onTap: () {
+              context.router.push(const SearchRoute());
+            },
             child: Container(
               width: 50,
               height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).cardColor.withOpacity(0.5),
+              color: Colors.transparent,
+              child: Hero(
+                tag: HeroTags.searchBar,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).cardColor.withOpacity(0.5),
+                  ),
+                  child: Icon(Icons.search_rounded,
+                      color: Theme.of(context).indicatorColor),
+                ),
               ),
-              child:
-                  Icon(Icons.search, color: Theme.of(context).indicatorColor),
             ),
           ),
         ],
