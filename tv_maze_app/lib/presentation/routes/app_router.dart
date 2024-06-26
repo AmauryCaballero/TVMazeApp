@@ -13,7 +13,15 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page, initial: true),
-        AutoRoute(page: HomeRoute.page),
-        AutoRoute(page: SearchRoute.page)
+        CustomRoute(
+          page: HomeRoute.page,
+          transitionsBuilder: TransitionsBuilders.noTransition,
+        ),
+        CustomRoute(
+          page: SearchRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideBottom,
+          durationInMilliseconds: 200,
+          opaque: false,
+        ),
       ];
 }
