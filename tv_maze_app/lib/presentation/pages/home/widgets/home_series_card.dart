@@ -19,7 +19,7 @@ class _HomeSeriesCard extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             CachedNetworkImage(
-              imageUrl: serie.image?.original ?? '',
+              imageUrl: serie.image.original,
               fit: BoxFit.cover,
               placeholder: (context, url) => Lottie.asset(
                 'tv_placeholder_animation'.jsonLottie,

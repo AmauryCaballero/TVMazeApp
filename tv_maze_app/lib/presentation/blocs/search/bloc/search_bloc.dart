@@ -12,12 +12,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> with Debounce {
   final SearchSeries searchSeries;
 
   SearchBloc({required this.searchSeries}) : super(SearchInitial()) {
-    on<PerformSearch>((event, emit) {
-      debounce(() => _onPerformSearch(event, emit));
+    on<PerformSearch>((event, emit) async {
+      await debounce(() => _onPerformSearch(event, emit));
     });
   }
 
-  void _onPerformSearch(PerformSearch event, Emitter<SearchState> emit) async {
+  Future<void> _onPerformSearch(
+      PerformSearch event, Emitter<SearchState> emit) async {
     emit(SearchLoading());
     final result = await searchSeries(event.query);
     result.fold(

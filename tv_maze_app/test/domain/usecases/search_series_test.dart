@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tv_maze_app/domain/entities/images.dart';
 import 'package:tv_maze_app/domain/entities/series.dart';
 import 'package:tv_maze_app/domain/repositories/series_repository.dart';
 import 'package:tv_maze_app/domain/usecases/search_series.dart';
@@ -25,6 +26,8 @@ void main() {
       summary: 'Summary',
       genres: [],
       rating: null,
+      image: Image.empty(),
+      premiered: '',
     )
   ];
   const tQuery = 'Test';

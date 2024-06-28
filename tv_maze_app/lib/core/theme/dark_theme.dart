@@ -44,9 +44,12 @@ class _DarkTheme {
     displaySmall: TextStyle(color: _AppColors.darkOnBackground),
     headlineMedium: TextStyle(color: _AppColors.darkOnBackground),
     headlineSmall: TextStyle(color: _AppColors.darkOnBackground),
-    titleLarge: TextStyle(color: _AppColors.darkOnBackground),
-    titleMedium: TextStyle(color: _AppColors.darkOnSurface),
-    titleSmall: TextStyle(color: _AppColors.darkOnSurface),
+    titleLarge: TextStyle(
+        color: _AppColors.darkOnBackground, fontWeight: FontWeight.bold),
+    titleMedium:
+        TextStyle(color: _AppColors.darkOnSurface, fontWeight: FontWeight.bold),
+    titleSmall:
+        TextStyle(color: _AppColors.darkOnSurface, fontWeight: FontWeight.bold),
     bodyLarge: TextStyle(color: _AppColors.darkOnSurface),
     bodyMedium: TextStyle(color: _AppColors.darkOnSurface),
     bodySmall: TextStyle(color: _AppColors.darkOnSurface),

@@ -90,10 +90,10 @@ class HomeScreen extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           onPageChanged: (index, reason) {
             final series = seriesList[index];
-            if (series.image?.original != null) {
+            if (series.image.original.isNotEmpty) {
               context
                   .read<BackgroundImageCubit>()
-                  .changeBackgroundImage(series.image?.original ?? '');
+                  .changeBackgroundImage(series.image.original);
             }
           },
         ),

@@ -21,7 +21,7 @@ class ImageModel extends Equatable {
   Map<String, dynamic> toJson() => _$ImageModelToJson(this);
 
   Image toDomain() {
-    return Image(medium: medium, original: original);
+    return Image(medium: medium ?? '', original: original ?? '');
   }
 
   @override
