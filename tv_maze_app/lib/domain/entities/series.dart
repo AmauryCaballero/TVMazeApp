@@ -8,9 +8,9 @@ class Series extends Equatable {
 
   final String name;
 
-  final String? summary;
+  final String summary;
 
-  final Image? image;
+  final Image image;
 
   final int? updated;
 
@@ -20,15 +20,18 @@ class Series extends Equatable {
 
   final Rating? rating;
 
+  final String premiered;
+
   const Series({
     required this.id,
     required this.name,
-    this.summary,
-    this.image,
+    required this.summary,
+    required this.image,
     this.updated,
     this.officialSite,
     required this.genres,
     required this.rating,
+    required this.premiered,
   });
 
   @override

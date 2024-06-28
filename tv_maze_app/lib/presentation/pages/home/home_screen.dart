@@ -11,9 +11,11 @@ import 'package:lottie/lottie.dart';
 import 'package:tv_maze_app/core/utils/widget_extension.dart';
 
 import '../../../core/utils/assets_extension.dart';
+import '../../../core/utils/hero_tags.dart';
 import '../../../domain/entities/series.dart';
 import '../../blocs/backgroundimage/cubit/background_image_cubit.dart';
 import '../../blocs/home/bloc/home_bloc.dart';
+import '../../routes/app_router.dart';
 
 part 'widgets/home_series_card.dart';
 part 'widgets/home_background_image.dart';
@@ -88,10 +90,10 @@ class HomeScreen extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           onPageChanged: (index, reason) {
             final series = seriesList[index];
-            if (series.image?.original != null) {
+            if (series.image.original.isNotEmpty) {
               context
                   .read<BackgroundImageCubit>()
-                  .changeBackgroundImage(series.image?.original ?? '');
+                  .changeBackgroundImage(series.image.original);
             }
           },
         ),

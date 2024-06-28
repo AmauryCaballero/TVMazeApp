@@ -44,9 +44,12 @@ class _DarkTheme {
     displaySmall: TextStyle(color: _AppColors.darkOnBackground),
     headlineMedium: TextStyle(color: _AppColors.darkOnBackground),
     headlineSmall: TextStyle(color: _AppColors.darkOnBackground),
-    titleLarge: TextStyle(color: _AppColors.darkOnBackground),
-    titleMedium: TextStyle(color: _AppColors.darkOnSurface),
-    titleSmall: TextStyle(color: _AppColors.darkOnSurface),
+    titleLarge: TextStyle(
+        color: _AppColors.darkOnBackground, fontWeight: FontWeight.bold),
+    titleMedium:
+        TextStyle(color: _AppColors.darkOnSurface, fontWeight: FontWeight.bold),
+    titleSmall:
+        TextStyle(color: _AppColors.darkOnSurface, fontWeight: FontWeight.bold),
     bodyLarge: TextStyle(color: _AppColors.darkOnSurface),
     bodyMedium: TextStyle(color: _AppColors.darkOnSurface),
     bodySmall: TextStyle(color: _AppColors.darkOnSurface),
@@ -66,17 +69,21 @@ class _DarkTheme {
   static final InputDecorationTheme _inputDecorationTheme =
       InputDecorationTheme(
     filled: true,
-    fillColor: _AppColors.darkSurface,
+    fillColor: _AppColors.darkSurface.withOpacity(0.5),
     focusedBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primary),
     ),
     enabledBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primaryVariant),
     ),
     errorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.darkError),
     ),
     focusedErrorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.darkError),
     ),
     labelStyle: const TextStyle(color: _AppColors.darkOnSurface),

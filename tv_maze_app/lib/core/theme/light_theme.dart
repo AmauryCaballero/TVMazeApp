@@ -61,17 +61,21 @@ class _LightTheme {
   static final InputDecorationTheme _inputDecorationTheme =
       InputDecorationTheme(
     filled: true,
-    fillColor: _AppColors.surface,
+    fillColor: _AppColors.surface.withOpacity(0.5),
     focusedBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primary),
     ),
     enabledBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.primaryVariant),
     ),
     errorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.error),
     ),
     focusedErrorBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30)),
       borderSide: BorderSide(color: _AppColors.error),
     ),
     labelStyle: const TextStyle(color: _AppColors.onSurface),
@@ -89,9 +93,12 @@ class _LightTheme {
     displaySmall: TextStyle(color: _AppColors.onBackground),
     headlineMedium: TextStyle(color: _AppColors.onBackground),
     headlineSmall: TextStyle(color: _AppColors.onBackground),
-    titleLarge: TextStyle(color: _AppColors.onBackground),
-    titleMedium: TextStyle(color: _AppColors.onSurface),
-    titleSmall: TextStyle(color: _AppColors.onSurface),
+    titleLarge:
+        TextStyle(color: _AppColors.onBackground, fontWeight: FontWeight.bold),
+    titleMedium:
+        TextStyle(color: _AppColors.onSurface, fontWeight: FontWeight.bold),
+    titleSmall:
+        TextStyle(color: _AppColors.onSurface, fontWeight: FontWeight.bold),
     bodyLarge: TextStyle(color: _AppColors.onSurface),
     bodyMedium: TextStyle(color: _AppColors.onSurface),
     bodySmall: TextStyle(color: _AppColors.onSurface),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_maze_app/core/theme/app_theme.dart';
 import 'package:tv_maze_app/presentation/blocs/home/bloc/home_bloc.dart';
+import 'package:tv_maze_app/presentation/blocs/search/bloc/search_bloc.dart';
 import 'package:tv_maze_app/presentation/blocs/splash/bloc/splash_bloc.dart';
 
 import 'core/configuration/di/injectable_config.dart';
@@ -27,6 +28,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider<BackgroundImageCubit>(
           create: (context) => getIt<BackgroundImageCubit>(),
+        ),
+        BlocProvider<SearchBloc>(
+          create: (context) => getIt<SearchBloc>(),
         )
       ],
       child: const AppWithThemeObserver(),

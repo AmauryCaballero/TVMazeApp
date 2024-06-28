@@ -9,6 +9,7 @@ class _HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,6 +24,30 @@ class _HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 textAlign: TextAlign.left,
               ).opacity(0.5),
             ],
+          ),
+          Expanded(child: Container()),
+          GestureDetector(
+            onTap: () {
+              context.router.push(const SearchRoute());
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              color: Colors.transparent,
+              child: Hero(
+                tag: HeroTags.searchBar,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).cardColor.withOpacity(0.5),
+                  ),
+                  child: Icon(Icons.search_rounded,
+                      color: Theme.of(context).indicatorColor),
+                ),
+              ),
+            ),
           ),
         ],
       ),
